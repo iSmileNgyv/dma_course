@@ -13,7 +13,7 @@ public class Task19 {
         for(int i = 0; i < cnt; i++) {
             sum += nums[i];
         }
-        double average = sum / nums.length;
+        double average = (double) sum / nums.length;
         System.out.println("Sum: " + sum + "\nAverage: " + average);
     }
 }
