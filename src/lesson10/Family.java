@@ -1,13 +1,10 @@
 package lesson10;
-
-import java.util.Arrays;
-
 public class Family{
     private Human mother;
     private Human father;
     private int childrenCount = 0;
     private int petCount = 0;
-    private Human[] children = new Human[10];
+    private Human[] children = new Human[30];
     private Pet[] pet = new Pet[100];
     public int getChildrenCount() {
         return childrenCount;
