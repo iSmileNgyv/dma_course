@@ -3,9 +3,13 @@ package lesson10;
 public class Human {
     private String name;
     private int age;
-    private Pet pet;
-    private Family family;
 
+    public Human() {
+    }
+    public Human(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
 
     public void setName(String name) {
         this.name = name;
@@ -18,17 +22,5 @@ public class Human {
     }
     public int getAge() {
         return this.age;
-    }
-    public void setPet(Pet pet) {
-        this.pet = pet;
-    }
-    public Pet getPet() {
-        return this.pet;
-    }
-    public void setFamily(Family family) {
-        this.family = family;
-    }
-    public Family getFamily() {
-        return this.family;
     }
 }

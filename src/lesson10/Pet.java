@@ -5,6 +5,12 @@ public class Pet {
     private int age;
     private String color;
 
+    public Pet() {}
+    public Pet(String name, int age, String color) {
+        this.name = name;
+        this.age = age;
+        this.color = color;
+    }
     public void setName(String name) {
         this.name = name;
     }
