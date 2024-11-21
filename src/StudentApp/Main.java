@@ -7,5 +7,6 @@ public class Main {
         student.study();
         var teacher = new Teacher(5, "İnformasiya Texnologiyaları", "BMU", "Xırdalan");
         teacher.teach();
+        // həm teacher ilə həm də student - də displayInfo() istifadə edə bilərik extends edib constructor da dataları set etdiyim üçün ayrıca Academy obyekti yaratmağa ehtiyac yoxdu
     }
 }
