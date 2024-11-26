@@ -11,4 +11,9 @@ public class Car implements Vehicle {
     public void stopEngine() {
         System.out.println("Maşının mühərriki söndürüldü");
     }
+
+    @Override
+    public String getFuelType() {
+        return "Benzin";
+    }
 }
