@@ -1,5 +1,7 @@
 package VehicleInterfaceTask;
 
+import BankAccountApp.FuelTypes;
+
 public class ElectricCar implements Vehicle{
     @Override
     public void startEngine() {
@@ -12,7 +14,7 @@ public class ElectricCar implements Vehicle{
     }
 
     @Override
-    public String getFuelType() {
-        return "Elektrik";
+    public FuelTypes getFuelType() {
+        return FuelTypes.ELEKTRIK;
     }
 }

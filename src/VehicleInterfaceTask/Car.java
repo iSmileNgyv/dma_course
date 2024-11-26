@@ -1,5 +1,7 @@
 package VehicleInterfaceTask;
 
+import BankAccountApp.FuelTypes;
+
 public class Car implements Vehicle {
 
     @Override
@@ -13,7 +15,7 @@ public class Car implements Vehicle {
     }
 
     @Override
-    public String getFuelType() {
-        return "Benzin";
+    public FuelTypes getFuelType() {
+        return FuelTypes.BENZIN;
     }
 }
