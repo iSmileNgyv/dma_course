@@ -3,6 +3,20 @@ package VehicleInterfaceTask;
 import BankAccountApp.FuelTypes;
 
 public class Car implements Vehicle {
+    private boolean hasFuel = false;
+
+    public boolean checkFuel() {
+        return this.hasFuel;
+    }
+
+    public void startCar() {
+        if(checkFuel()) {
+            this.startEngine();
+        }
+        else {
+            System.out.println("Yanacaq olmadığına görə mühərrik işə düşə bilmədi");
+        }
+    }
 
     @Override
     public void startEngine() {
@@ -15,7 +29,7 @@ public class Car implements Vehicle {
     }
 
     @Override
-    public FuelTypes getFuelType() {
-        return FuelTypes.BENZIN;
+    public String getFuelType() {
+        return FuelTypes.BENZIN.getDisplayName();
     }
 }

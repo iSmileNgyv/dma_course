@@ -14,7 +14,7 @@ public class Bike implements Vehicle {
     }
 
     @Override
-    public FuelTypes getFuelType() {
-        return FuelTypes.ELEKTRIK;
+    public String getFuelType() {
+        return FuelTypes.ELEKTRIK.getDisplayName();
     }
 }
