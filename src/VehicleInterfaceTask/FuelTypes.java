@@ -1,4 +1,4 @@
-package BankAccountApp;
+package VehicleInterfaceTask;
 
 public enum FuelTypes {
     BENZIN("benzin"),

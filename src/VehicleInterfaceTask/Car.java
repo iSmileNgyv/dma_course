@@ -1,7 +1,5 @@
 package VehicleInterfaceTask;
 
-import BankAccountApp.FuelTypes;
-
 public class Car implements Vehicle {
     private boolean hasFuel = false;
 

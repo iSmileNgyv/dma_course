@@ -1,7 +1,5 @@
 package VehicleInterfaceTask;
 
-import BankAccountApp.FuelTypes;
-
 public class ElectricCar implements Vehicle{
     @Override
     public void startEngine() {
