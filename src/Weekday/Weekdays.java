@@ -1,4 +1,4 @@
-package EnumExample;
+package Weekday;
 
 public enum Weekdays {
     MONDAY,

@@ -1,4 +1,4 @@
-package EnumExample;
+package TrafficLight;
 
 public enum TrafficLights {
     RED("Dayan"),

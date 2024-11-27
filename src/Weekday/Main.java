@@ -1,11 +1,9 @@
-package EnumExample;
-
-import java.util.Date;
+package Weekday;
 
 public class Main {
     public static void main(String[] args) {
-        /*String day = Weekdays.SUNDAY.toString();
-        switch(day) {
+        String toDay = Weekdays.SUNDAY.toString();
+        switch(toDay) {
             case "MONDAY":
                 System.out.println("Monday is working day");
                 break;
@@ -30,9 +28,6 @@ public class Main {
             default:
                 System.out.println("Invalid day");
                 break;
-        }*/
-        for(int i = 0; i < TrafficLights.values().length; i++) {
-            System.out.println(TrafficLights.values()[i].getValue());
         }
     }
 }
