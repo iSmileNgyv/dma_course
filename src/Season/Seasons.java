@@ -24,6 +24,7 @@ public enum Seasons {
     }
 
     public String getFormatInfo() {
-        return this.description + " fəslində minimum temperatur: " + this.minTemp + " və maksimum temperatur: " + this.maxTemp + " dərəcə olur";
+        String formattedStr = "%s fəslində minimum temperatur: %.2f, maximum temperatur: %.2f dərəcə olur";
+        return String.format(formattedStr, this.getDescription(), this.getMinTemp(), this.getMaxTemp());
     }
 }
