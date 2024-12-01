@@ -5,7 +5,6 @@ public class Main {
         try {
             var customer1 = new Customer(1, "Ismayil", 100);
             var customer2 = new Customer(2, "Eli", 100);
-
             var bankCustomer = new BankCustomer();
             bankCustomer.addCustomer(customer1);
             bankCustomer.addCustomer(customer2);
