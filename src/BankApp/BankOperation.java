@@ -17,11 +17,10 @@ public class BankOperation extends AbstractBankOperation implements PaymentServi
     }
 
     @Override
-    public boolean checkBalance(double amount) {
+    public void checkBalance(double amount) {
         if(this.bankCustomer.getBalance() < amount) {
             throw new InsufficientFundsException(this.bankCustomer.getCurrentCustomer().getName() + ": balansda kifayət qədər vəsait yoxdur");
         }
-        return true;
     }
 
     @Override
