@@ -14,11 +14,11 @@ public class Main {
             student.getStudents()[i].displayInfo();
         }
 
-        System.out.println();
+        System.out.println("\nClone edilmiş array:");
         for(int i = 0; i < student.cloneStudent().length; i++) {
             student.getStudents()[i].displayInfo();
         }
-        System.out.println();
+        System.out.println("\nManual copy edilmiş array:");
         for(int i = 0; i < student.copyOfStudents().length; i++) {
             student.getStudents()[i].displayInfo();
         }
