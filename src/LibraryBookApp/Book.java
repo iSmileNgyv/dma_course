@@ -1,10 +1,18 @@
 package LibraryBookApp;
 
+import java.time.LocalDateTime;
+import java.util.Objects;
+import java.util.Optional;
+
 public class Book {
     private Integer barcode;
     private String name;
     private String author;
     private boolean available;
+    private LocalDateTime rentedAt;
+    private LocalDateTime returnedAt;
+    private LocalDateTime addedAt;
+    private LocalDateTime removedAt;
 
     public Integer getBarcode() {
         return barcode;
@@ -44,5 +52,42 @@ public class Book {
         if (o == null || getClass() != o.getClass()) return false;
         Book book = (Book) o;
         return barcode != null && barcode.equals(book.barcode);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, barcode);
+    }
+
+    public LocalDateTime getRentedAt() {
+        return rentedAt;
+    }
+
+    public void setRentedAt(LocalDateTime rentedAt) {
+        this.rentedAt = rentedAt;
+    }
+
+    public LocalDateTime getReturnedAt() {
+        return returnedAt;
+    }
+
+    public void setReturnedAt(LocalDateTime returnedAt) {
+        this.returnedAt = returnedAt;
+    }
+
+    public LocalDateTime getAddedAt() {
+        return addedAt;
+    }
+
+    public void setAddedAt(LocalDateTime addedAt) {
+        this.addedAt = addedAt;
+    }
+
+    public LocalDateTime getRemovedAt() {
+        return removedAt;
+    }
+
+    public void setRemovedAt(LocalDateTime removedAt) {
+        this.removedAt = removedAt;
     }
 }
