@@ -14,16 +14,10 @@ public class Library {
     private HashMap<Book, List<String>> log = new HashMap<>();
 
     public void addBook(Book book) {
-        boolean bookAdded = false;
         for (Map.Entry<String, Set<Book>> entry : this.books) {
-            Set<Book> bookSet = entry.getValue();
-            if (bookSet.add(book)) {
-                bookAdded = true;
-                break;
+            if (entry.getKey().equals(book.getBarcode())) {
+                throw new BookIsExistsException("Bu barcode-a sahib kitab artıq mövcuddur");
             }
-        }
-        if(bookAdded) {
-            throw new BookIsExistsException("Kitab artıq əlavə olunub");
         }
         Set<Book> newBookSet = new HashSet<>();
         newBookSet.add(book);
@@ -60,7 +54,6 @@ public class Library {
                 break;
             }
         }
-
         throw new NoBookException("Kitab mövcud deyil");
     }
 

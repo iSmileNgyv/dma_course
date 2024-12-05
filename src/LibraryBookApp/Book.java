@@ -46,7 +46,7 @@ public class Book {
         this.available = available;
     }
 
-    @Override
+    /*@Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -57,7 +57,7 @@ public class Book {
     @Override
     public int hashCode() {
         return Objects.hash(name, barcode);
-    }
+    }*/
 
     public LocalDateTime getRentedAt() {
         return rentedAt;
