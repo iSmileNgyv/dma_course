@@ -5,7 +5,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 public class Book {
-    private Integer barcode;
+    private String barcode;
     private String name;
     private String author;
     private boolean available;
@@ -14,11 +14,11 @@ public class Book {
     private LocalDateTime addedAt;
     private LocalDateTime removedAt;
 
-    public Integer getBarcode() {
+    public String getBarcode() {
         return barcode;
     }
 
-    public void setBarcode(Integer barcode) {
+    public void setBarcode(String barcode) {
         this.barcode = barcode;
     }
 

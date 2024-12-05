@@ -3,10 +3,11 @@ package LibraryBookApp;
 public class Main {
     public static void main(String[] args) {
         var book = new Book();
-        book.setBarcode(12345);
+        book.setBarcode("12e345");
         book.setName("Harry Potter");
         book.setAuthor("Harry Potter");
         book.setAvailable(true);
+
 
         var library = new Library();
         library.addBook(book);

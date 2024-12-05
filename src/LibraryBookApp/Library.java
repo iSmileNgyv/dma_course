@@ -1,63 +1,83 @@
 package LibraryBookApp;
 
 import LibraryBookApp.Exceptions.AlreadyRentedException;
+import LibraryBookApp.Exceptions.BookIsExistsException;
 import LibraryBookApp.Exceptions.NoBookException;
 import LibraryBookApp.Exceptions.WrongOperationException;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class Library {
-    private LinkedList<Book> books = new LinkedList<>();
+    private LinkedList<Map.Entry<String, Set<Book>>> books = new LinkedList<>();
     private HashMap<Book, List<String>> log = new HashMap<>();
 
     public void addBook(Book book) {
-        this.books.add(book);
+        boolean bookAdded = false;
+        for (Map.Entry<String, Set<Book>> entry : this.books) {
+            Set<Book> bookSet = entry.getValue();
+            if (bookSet.add(book)) {
+                bookAdded = true;
+                break;
+            }
+        }
+        if(bookAdded) {
+            throw new BookIsExistsException("Kitab artıq əlavə olunub");
+        }
+        Set<Book> newBookSet = new HashSet<>();
+        newBookSet.add(book);
+        this.books.add(new AbstractMap.SimpleEntry<>(book.getBarcode(), newBookSet));
         this.addLog(book, "add");
-        //System.out.println(book.getName() + " adlı kitab kitabxanaya əlavə edildi");
     }
 
     public void removeBook(Book book) {
-        int index = this.books.indexOf(book);
-        if(index == -1) {
+        boolean bookFound = false;
+        for (Map.Entry<String, Set<Book>> entry : this.books) {
+            Set<Book> bookSet = entry.getValue();
+            if (bookSet.contains(book)) {
+                bookSet.remove(book);
+                bookFound = true;
+                this.addLog(book, "remove");
+                break;
+            }
+        }
+        if (!bookFound) {
             throw new NoBookException("Kitab mövcud deyil");
         }
-        this.books.remove(book);
-        this.addLog(book, "remove");
-        //System.out.println(book.getName() + " adlı kitab kitabxanadan xaric edildi");
     }
 
     public void rentBook(Book book) {
-        int index = this.books.indexOf(book);
-        if(index == -1) {
-            throw new NoBookException("Kitab mövcud deyil");
+        for (Map.Entry<String, Set<Book>> entry : this.books) {
+            Set<Book> bookSet = entry.getValue();
+            if (bookSet.contains(book)) {
+                if (!book.isAvailable()) {
+                    throw new AlreadyRentedException("Kitab artıq icarəyə verilib");
+                }
+                book.setAvailable(false);
+                book.setRentedAt(LocalDateTime.now());
+                this.addLog(book, "rent");
+                break;
+            }
         }
-        var foundBook = this.books.get(index);
-        if(!foundBook.isAvailable()) {
-            throw new AlreadyRentedException("Kitab artıq icarəyə verilib");
-        }
-        foundBook.setAvailable(false);
-        foundBook.setRentedAt(LocalDateTime.now());
-        this.addLog(foundBook, "rent");
-        //System.out.println(foundBook.getName() + " adlı kitab icarəyə verildi");
+
+        throw new NoBookException("Kitab mövcud deyil");
     }
 
     public void returnBook(Book book) {
-        int index = this.books.indexOf(book);
-        if(index == -1) {
-            throw new NoBookException("Kitab mövcud deyil");
+        for (Map.Entry<String, Set<Book>> entry : this.books) {
+            Set<Book> bookSet = entry.getValue();
+            if (bookSet.contains(book)) {
+                if (book.isAvailable()) {
+                    throw new WrongOperationException("Kitab kitabxanamıza aid deyil");
+                }
+                book.setAvailable(true);
+                this.addLog(book, "return");
+                break;
+            }
         }
-        var foundBook = this.books.get(index);
-        if(foundBook.isAvailable()) {
-           throw new WrongOperationException("Kitab kitabxanamıza aid deyil");
-        }
-        foundBook.setAvailable(true);
-        this.addLog(foundBook, "return");
-        //System.out.println(foundBook.getName() + " adlı kitab kitabxanaya geri qaytarıldı");
+
+        throw new NoBookException("Kitab mövcud deyil");
     }
 
     private void addLog(Book book, String operation) {
@@ -76,9 +96,13 @@ public class Library {
 
     public void showAvailableBooks() {
         int cnt = 1;
-        for(Book book : this.books.stream().filter(Book::isAvailable).toList()) {
-            System.out.println(cnt + ") Ad: " + book.getName());
-            cnt++;
+        for (Map.Entry<String, Set<Book>> entry : this.books) {
+            for (Book book : entry.getValue()) {
+                if (book.isAvailable()) {
+                    System.out.println(cnt + ") Ad: " + book.getName());
+                    cnt++;
+                }
+            }
         }
     }
 
