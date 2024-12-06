@@ -34,7 +34,7 @@ public class Main {
             library.showAvailableBooks();
             library.showLogs(book);
         }
-        if(!errorMessage.isEmpty()) {
+        if(errorMessage != null && !errorMessage.isEmpty()) {
             System.err.println(errorMessage);
         }
     }
