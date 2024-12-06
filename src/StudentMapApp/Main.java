@@ -21,6 +21,7 @@ public class Main {
             operation.addStudent(student2);
             //operation.addStudent(student2);
             operation.removeStudent(student2);
+            operation.addStudent(student3);
         } catch (Exception e) {
             errorMessage = e.getMessage();
         } finally {
