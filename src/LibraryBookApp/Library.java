@@ -10,43 +10,41 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class Library {
-    private Map.Entry<String, Set<Book>> books;
+    private Map<String, Set<Book>> books = new HashMap<>();
     private HashMap<Book, List<String>> log = new HashMap<>();
 
     public void addBook(Book book) {
-        if (this.books != null && this.books.getKey().equals(book.getBarcode())) {
+        if (this.books != null && this.books.containsKey(book.getBarcode())) {
             throw new BookIsExistsException("Bu barcode-a sahib kitab artıq mövcuddur");
         }
         Set<Book> newBookSet = new HashSet<>();
         newBookSet.add(book);
-        this.books = new AbstractMap.SimpleEntry<>(book.getBarcode(), newBookSet);
+        this.books.putIfAbsent(book.getBarcode(), newBookSet);
         this.addLog(book, "add");
     }
 
     public void removeBook(Book book) {
-        if (this.books != null && this.books.getValue().contains(book)) {
-            this.books.getValue().remove(book);
-            this.addLog(book, "remove");
-        } else {
+        if (!(this.books != null && this.books.containsKey(book.getBarcode()) && this.books.get(book.getBarcode()).contains(book))) {
             throw new NoBookException("Kitab mövcud deyil");
         }
+        this.books.get(book.getBarcode()).remove(book);
+        this.addLog(book, "remove");
     }
 
     public void rentBook(Book book) {
-        if (this.books != null && this.books.getValue().contains(book)) {
-            if (!book.isAvailable()) {
-                throw new AlreadyRentedException("Kitab artıq icarəyə verilib");
-            }
-            book.setAvailable(false);
-            book.setRentedAt(LocalDateTime.now());
-            this.addLog(book, "rent");
-        } else {
+        if (!(this.books != null && this.books.get(book.getBarcode()).contains(book))) {
             throw new NoBookException("Kitab mövcud deyil");
         }
+        if (!book.isAvailable()) {
+            throw new AlreadyRentedException("Kitab artıq icarəyə verilib");
+        }
+        book.setAvailable(false);
+        book.setRentedAt(LocalDateTime.now());
+        this.addLog(book, "rent");
     }
 
     public void returnBook(Book book) {
-        if (!(this.books != null && this.books.getValue().contains(book))) {
+        if (!(this.books != null && this.books.get(book.getBarcode()).contains(book))) {
             throw new NoBookException("Kitab mövcud deyil");
 
         }
@@ -74,10 +72,12 @@ public class Library {
     public void showAvailableBooks() {
         int cnt = 1;
         if (this.books != null) {
-            for (Book book : this.books.getValue()) {
-                if (book.isAvailable()) {
-                    System.out.println(cnt + ") Ad: " + book.getName());
-                    cnt++;
+            for (Set<Book> bookSet : this.books.values()) {
+                for (Book book : bookSet) {
+                    if (book.isAvailable()) {
+                        System.out.println(cnt + ") Ad: " + book.getName());
+                        cnt++;
+                    }
                 }
             }
         }
