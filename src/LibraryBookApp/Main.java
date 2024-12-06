@@ -17,11 +17,11 @@ public class Main {
 
             var library = new Library();
             library.addBook(book);
-            library.addBook(book2);
-            library.removeBook(book);
-            //library.rentBook(book);
-            //library.returnBook(book);
-            //library.returnBook(book);
+            //library.addBook(book2);
+            //library.removeBook(book);
+            library.rentBook(book);
+            library.returnBook(book);
+            library.returnBook(book);
             library.showAvailableBooks();
 
             library.showLogs(book);

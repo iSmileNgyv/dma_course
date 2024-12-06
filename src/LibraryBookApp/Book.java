@@ -46,19 +46,6 @@ public class Book {
         this.available = available;
     }
 
-    /*@Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Book book = (Book) o;
-        return barcode != null && barcode.equals(book.barcode);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, barcode);
-    }*/
-
     public LocalDateTime getRentedAt() {
         return rentedAt;
     }
