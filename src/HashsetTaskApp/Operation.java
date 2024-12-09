@@ -15,40 +15,31 @@ public class Operation {
     private final HashMap<Student, List<String>> log = new HashMap<>();
 
     public void addStudent(Student student) {
-        this.isExist(student);
+        this.errorIsExist(student);
         this.students.add(student);
         this.addLog(student, "add");
     }
 
     public void removeStudent(Student student) {
-        this.isNotExist(student);
+        this.errorNotExist(student);
         this.students.remove(student);
         this.addLog(student, "remove");
     }
 
-    private void isExist(Student student, boolean isExist) {
-        if(isExist) {
-            if(!this.students.contains(student)) {
-                throw new StudentNotFoundException(String.format("Student with id %d not found", student.getId()));
-            }
-        } else {
-            if(this.students.contains(student)) {
-                throw new StudentNotFoundException(String.format("Student with id %d already exist", student.getId()));
-            }
+    private void errorIsExist(Student student) {
+        if(this.students.contains(student)) {
+            throw new StudentNotFoundException(String.format("Student with id %d not found", student.getId()));
         }
-
     }
 
-    private void isExist(Student student) {
-        this.isExist(student, false);
-    }
-
-    private void isNotExist(Student student) {
-        this.isExist(student, true);
+    private void errorNotExist(Student student) {
+        if(!this.students.contains(student)) {
+            throw new StudentNotFoundException(String.format("Student with id %d already exist", student.getId()));
+        }
     }
 
     public void searchStudent(Student student) {
-        this.isExist(student, true);
+        this.errorNotExist(student);
         this.addLog(student, "search");
     }
 
