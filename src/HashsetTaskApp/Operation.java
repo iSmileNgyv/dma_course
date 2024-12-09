@@ -59,9 +59,6 @@ public class Operation {
     }
 
     private void addLog(Student student, String operation) {
-        LocalDateTime now = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        String formattedDate = now.format(formatter);
         String logEntry = switch (operation.toLowerCase()) {
             case "add" -> String.format("Student added: Student{name='%s', id=%d}", student.getName(), student.getId());
             case "search" -> String.format("Found: Student{name='%s', id=%d}", student.getName(), student.getId());
