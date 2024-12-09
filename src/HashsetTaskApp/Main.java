@@ -3,6 +3,7 @@ package HashsetTaskApp;
 public class Main {
     public static void main(String[] args) {
         var operation = new Operation();
+        String errorMessage = "";
         try {
             var emin = new Student(4, "Emin");
             operation.addStudent(new Student(1, "Ilkin"));
@@ -16,9 +17,11 @@ public class Main {
 
             operation.searchStudent(1);
             operation.searchStudent(emin);
-            operation.showLogs();
         }catch(Exception e) {
-            System.err.println(e.getMessage());
+            errorMessage = e.getMessage();
+        } finally {
+            operation.showLogs();
+            System.err.println(errorMessage);
         }
 
     }

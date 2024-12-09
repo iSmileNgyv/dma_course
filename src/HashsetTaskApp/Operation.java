@@ -32,7 +32,6 @@ public class Operation {
                 throw new StudentNotFoundException(String.format("Student with id %d already exist", student.getId()));
             }
         }
-        return;
     }
 
     private void errorNotExist(Student student) {
