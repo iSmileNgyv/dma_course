@@ -27,15 +27,21 @@ public class Operation {
     }
 
     private void errorIsExist(Student student) {
-        if(this.students.contains(student)) {
-            throw new StudentNotFoundException(String.format("Student with id %d not found", student.getId()));
+        for(Student s : this.students) {
+            if(s.equals(student)) {
+                throw new StudentNotFoundException(String.format("Student with id %d already exist", student.getId()));
+            }
         }
+        return;
     }
 
     private void errorNotExist(Student student) {
-        if(!this.students.contains(student)) {
-            throw new StudentNotFoundException(String.format("Student with id %d already exist", student.getId()));
+        for(Student s : this.students) {
+            if(s.equals(student)) {
+                return;
+            }
         }
+        throw new StudentNotFoundException(String.format("Student with id %d already exist", student.getId()));
     }
 
     public void searchStudent(Student student) {

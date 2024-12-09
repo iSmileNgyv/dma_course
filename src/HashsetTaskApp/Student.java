@@ -25,4 +25,13 @@ public class Student {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj == null) return false;
+        if(obj == this) return true;
+        if(obj.getClass() != this.getClass()) return false;
+        Student student = (Student) obj;
+        return student.getId() == this.getId() && student.getName().equals(this.getName());
+    }
 }
