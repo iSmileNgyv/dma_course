@@ -45,12 +45,8 @@ public class Operation {
 
     public void displayInfo() {
         for(Tour tour : tours) {
-            System.out.println("Tour ID: " + tour.getTourId());
-            System.out.println("Tour Name: " + tour.getTourName());
-            System.out.println("Price: " + tour.getPrice());
-            System.out.println("Is Reserved: " + tour.isReserved());
-            System.out.println("Tour Package: " + tour.getTourPackage());
-            System.out.println();
+            System.out.printf("Tour ID: %d\nTour Name: %s\nPrice: %.2f\nIs Reserved: %b\nTour Package: %s\n\n",
+                    tour.getTourId(), tour.getTourName(), tour.getPrice(), tour.isReserved(), tour.getTourPackage());
         }
     }
 }
