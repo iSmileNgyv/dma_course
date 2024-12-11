@@ -33,6 +33,9 @@ public class Operation {
         this.isExistTour(tour);
         if(tour.isReserved())
             throw new TourIsAlreadyReservedException("Tour is already reserved");
+        if(tour.getCustomer() == null)
+            throw new NullPointerException("Customer is not set");
+        tour.getCustomer().getTours().add(tour);
         tour.setReserved(true);
     }
 
@@ -40,6 +43,9 @@ public class Operation {
         this.isExistTour(tour);
         if(!tour.isReserved())
             throw new TourIsNotReservedException("Tour is not reserved");
+        if(tour.getCustomer() == null)
+            throw new NullPointerException("Customer is not set");
+        tour.getCustomer().getTours().remove(tour);
         tour.setReserved(false);
     }
 

@@ -6,6 +6,7 @@ public class Tour {
     private double price;
     private boolean isReserved;
     private TourPackage tourPackage;
+    private Customer customer;
 
     public Tour() {}
     public Tour(int tourId, String tourName, double price, boolean isReserved, TourPackage tourPackage) {
@@ -58,7 +59,15 @@ public class Tour {
 
     @Override
     public String toString() {
-        return String.format("Tour ID: %d\nTour Name: %s\nPrice: %.2f\nIs Reserved: %b\nTour Package: %s\n",
-                this.getTourId(), this.getTourName(), this.getPrice(), this.isReserved(), this.getTourPackage());
+        return String.format("Customer ID: %d\nTour ID: %d\nTour Name: %s\nPrice: %.2f\nIs Reserved: %b\nTour Package: %s\n",
+                this.customer.getCustomerId(), this.getTourId(), this.getTourName(), this.getPrice(), this.isReserved(), this.getTourPackage());
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 }
