@@ -55,4 +55,10 @@ public class Tour {
     public void setTourPackage(TourPackage tourPackage) {
         this.tourPackage = tourPackage;
     }
+
+    @Override
+    public String toString() {
+        return String.format("Tour ID: %d\nTour Name: %s\nPrice: %.2f\nIs Reserved: %b\nTour Package: %s\n",
+                this.getTourId(), this.getTourName(), this.getPrice(), this.isReserved(), this.getTourPackage());
+    }
 }
