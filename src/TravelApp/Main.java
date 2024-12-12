@@ -5,7 +5,7 @@ public class Main {
         var customer = new Customer(1);
         var tour = new Tour();
         tour.setTourId(1);
-        tour.setTourName("Bali");
+        tour.setTourName("Baku");
         tour.setPrice(1000);
         tour.setReserved(false);
         tour.setTourPackage(TourPackage.BEACH_HOLIDAY);
@@ -17,7 +17,7 @@ public class Main {
 
         //operation.cancelReserve(tour);
 
-        operation.displayInfo();
+        //operation.displayInfo();
 
         System.out.println(customer);
     }
