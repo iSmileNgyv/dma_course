@@ -11,10 +11,6 @@ public class Operation {
 
     public Operation() {}
 
-    public Operation(ArrayList<Tour> tours) {
-        this.tours.addAll(tours);
-    }
-
     public void addTour(Tour tour) {
         tours.add(tour);
     }
