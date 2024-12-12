@@ -46,6 +46,7 @@ public class Operation {
         if(tour.getCustomer() == null)
             throw new NullPointerException("Customer is not set");
         tour.getCustomer().getTours().remove(tour);
+        tour.setCustomer(new Customer(0));
         tour.setReserved(false);
     }
 

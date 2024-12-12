@@ -14,5 +14,11 @@ public class Main {
         operation.addTour(tour);
         operation.reserveTour(tour);
         operation.displayInfo();
+
+        //operation.cancelReserve(tour);
+
+        operation.displayInfo();
+
+        System.out.println(customer);
     }
 }

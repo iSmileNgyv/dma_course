@@ -30,4 +30,17 @@ public class Customer {
     public void setTours(List<Tour> tours) {
         this.tours = tours;
     }
+
+    @Override
+    public String toString() {
+        String res = "Customer{id=%d, tours=[\n";
+        for(Tour tour : this.tours) {
+            if(tour == this.tours.get(this.tours.size() - 1))
+                res += tour.toString();
+            else
+                res += tour.toString() + ", ";
+        }
+        res += "]}";
+        return String.format(res, this.customerId);
+    }
 }
