@@ -23,6 +23,7 @@ public class Operation {
         int cnt = 1;
         for(String log : this.logs) {
             System.out.println(cnt + ". " + log);
+            cnt++;
         }
     }
 
