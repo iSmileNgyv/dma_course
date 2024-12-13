@@ -48,7 +48,7 @@ public class Course<T> {
     }
 
     private void isNotExist(T student) {
-        if(this.students.contains(student)) {
+        if(!this.students.contains(student)) {
             throw new IsExistException("Is not exist");
         }
     }
