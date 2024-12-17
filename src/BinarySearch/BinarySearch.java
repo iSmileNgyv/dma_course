@@ -15,6 +15,7 @@ public class BinarySearch {
     
     public void binarySearch(Integer num) {
         this.sort();
+        boolean found = false;
         int left = 0;
         int right = this.data.size() - 1;
         int step = 0;
@@ -22,6 +23,7 @@ public class BinarySearch {
             int mid = left + (right - left) / 2;
             if (this.data.get(mid).equals(num)) {
                 System.out.println("index: " + mid + " step: " + step);
+                found = true;
                 break;
             }
             if (this.data.get(mid) < num) {
@@ -32,7 +34,7 @@ public class BinarySearch {
             }
             step++;
         }
-        System.out.println("Not found");
+        System.out.println(!found ? "Not found" : "");
     }
 
     @Override
