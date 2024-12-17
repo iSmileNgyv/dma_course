@@ -22,7 +22,7 @@ public class BinarySearch {
             int mid = left + (right - left) / 2;
             if (this.data.get(mid).equals(num)) {
                 System.out.println("index: " + mid + " step: " + step);
-                return;
+                break;
             }
             if (this.data.get(mid) < num) {
                 left = mid + 1;
