@@ -25,10 +25,6 @@ public class BinarySearch {
             }
         }
     }
-
-    private void sort() {
-        Collections.sort(this.data);
-    }
     
     public void binarySearch(Integer num) {
         this.bubbleSort();
