@@ -8,9 +8,10 @@ public class BinarySearch {
         this.data = data;
     }
 
-    private void bubbleSort() {
-        boolean swap = false;
+    public void bubbleSort() {
+        boolean swap;
         do{
+            swap = false;
             for (int i = 0; i < this.data.size() - 1; i++) {
                 if (this.data.get(i) > this.data.get(i + 1)) {
                     Integer temp = this.data.get(i);
@@ -19,7 +20,7 @@ public class BinarySearch {
                     swap = true;
                 }
             }
-        }while(!swap);
+        }while(swap);
     }
     
     public void binarySearch(Integer num) {
