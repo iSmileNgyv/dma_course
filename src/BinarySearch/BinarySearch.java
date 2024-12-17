@@ -9,12 +9,29 @@ public class BinarySearch {
         this.data = data;
     }
 
+    private void bubbleSort() {
+        while(true) {
+            boolean swapped = false;
+            for (int i = 0; i < this.data.size() - 1; i++) {
+                if (this.data.get(i) > this.data.get(i + 1)) {
+                    Integer temp = this.data.get(i);
+                    this.data.set(i, this.data.get(i + 1));
+                    this.data.set(i + 1, temp);
+                    swapped = true;
+                }
+            }
+            if (!swapped) {
+                break;
+            }
+        }
+    }
+
     private void sort() {
         Collections.sort(this.data);
     }
     
     public void binarySearch(Integer num) {
-        this.sort();
+        this.bubbleSort();
         boolean found = false;
         int left = 0;
         int right = this.data.size() - 1;
