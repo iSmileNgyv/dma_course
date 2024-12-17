@@ -9,17 +9,17 @@ public class BinarySearch {
     }
 
     private void bubbleSort() {
-        boolean swapped = false;
+        boolean swap = false;
         do{
             for (int i = 0; i < this.data.size() - 1; i++) {
                 if (this.data.get(i) > this.data.get(i + 1)) {
                     Integer temp = this.data.get(i);
                     this.data.set(i, this.data.get(i + 1));
                     this.data.set(i + 1, temp);
-                    swapped = true;
+                    swap = true;
                 }
             }
-        }while(!swapped);
+        }while(!swap);
     }
     
     public void binarySearch(Integer num) {
