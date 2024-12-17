@@ -18,7 +18,7 @@ public class BinarySearch {
         boolean found = false;
         int left = 0;
         int right = this.data.size() - 1;
-        int step = 0;
+        int step = 1;
         while (left <= right) {
             int mid = left + (right - left) / 2;
             if (this.data.get(mid).equals(num)) {
