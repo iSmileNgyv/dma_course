@@ -1,7 +1,6 @@
 package BinarySearch;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class BinarySearch {
     private ArrayList<Integer> data = new ArrayList<>();
@@ -10,8 +9,8 @@ public class BinarySearch {
     }
 
     private void bubbleSort() {
-        while(true) {
-            boolean swapped = false;
+        boolean swapped = false;
+        do{
             for (int i = 0; i < this.data.size() - 1; i++) {
                 if (this.data.get(i) > this.data.get(i + 1)) {
                     Integer temp = this.data.get(i);
@@ -20,10 +19,7 @@ public class BinarySearch {
                     swapped = true;
                 }
             }
-            if (!swapped) {
-                break;
-            }
-        }
+        }while(!swapped);
     }
     
     public void binarySearch(Integer num) {
