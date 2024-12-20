@@ -1,5 +1,5 @@
 import java.util.Arrays;
-import java.util.List;
+
 public class StreamExample5 {
     public static void main(String[] args) {
         var list = Arrays.asList(
