@@ -15,11 +15,11 @@ public class GenericQueue<T> {
         list.add(item);
     }
 
-    public T dequeue() {
+    public void dequeue() {
         if (this.isEmpty()) {
             throw new QueueNotFoundError("Queue is empty");
         }
-        return list.removeFirst();
+        list.removeFirst();
     }
 
     public boolean isEmpty() {
