@@ -24,6 +24,7 @@ public class Person {
     }
 
     public ArrayList<Phone> getPhones() {
-        return this.phones;
+        ArrayList<Phone> list =  this.phones;
+        return list;
     }
 }
