@@ -3,7 +3,7 @@ import java.io.*;
 public class FileOperation{
     public static void main(String[] args) {
         String filePath = "src/FileTask1/ad_soyad.txt";
-        String dataToWrite = "Ismayil Nagiyev";
+        String dataToWrite = "Ismayil Nagiyev\nJava Developer";
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
             writer.write(dataToWrite);
             System.out.println("Written to file");
