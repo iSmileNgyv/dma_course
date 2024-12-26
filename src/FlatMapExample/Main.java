@@ -20,7 +20,7 @@ public class Main {
 
         people.stream()
                 .flatMap(person -> person.getPhones().stream())
-                .map(Phone::getNumber)
+                .map(phone -> phone.getPerson().getName() + ": " + phone.getNumber())
                 .forEach(System.out::println);
     }
 }
