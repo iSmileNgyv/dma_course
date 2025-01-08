@@ -57,6 +57,6 @@ SELECT * FROM OrderDetails WHERE OrderID = 1;
 UPDATE Products SET Price = 19.99 WHERE ProductID = 1;
 
 INSERT INTO Products (Name, Price, Quantity, Description, CategoryID)
-VALUES ('Apple', 10.99, 100, 'Product description', 1);
+VALUES ('Apple', 10.99, 100, 'Apple description', 1);
 
 DELETE FROM Products WHERE ProductID = 1;
